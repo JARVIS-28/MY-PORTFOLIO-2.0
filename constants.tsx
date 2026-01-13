@@ -93,7 +93,7 @@ export const EXPERIENCE: Experience[] = [
   {
     role: "Full Stack Developer",
     company: "GrayStag",
-    period: "Nov 2025 – Present",
+    period: "Nov 2025 – Dec 2025",
     description: "Developed REST endpoints and SQL queries for internal web modules. Refactored validation logic reducing code duplication. Collaborated in an agile team to ship monthly releases."
   },
   {
