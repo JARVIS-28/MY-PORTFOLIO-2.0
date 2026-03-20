@@ -101,6 +101,12 @@ export const EXPERIENCE: Experience[] = [
     company: "CodeChef PESU ECC",
     period: "Sept 2023 – Apr 2025",
     description: "Promoted coding contests and hackathons through online campaigns and on-campus events, increasing participation from first-year students."
+  },
+  {
+    role: "Finance Team Member",
+    company: "Maaya 2023 & 2024",
+    period: "2023 — 2024",
+    description: "Helped draft and track event budgets for large cultural festivals, coordinating with multiple clubs to manage expenses."
   }
 ];
 
