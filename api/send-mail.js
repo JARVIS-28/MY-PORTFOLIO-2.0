@@ -8,24 +8,37 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { message, email } = req.body;
+    const { name, email, subject, message, ccSender = true } = req.body;
+
+    if (!name || !email || !message || !subject) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
 
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
-      port: 587,
-      secure: false,
+      port: Number(process.env.SMTP_PORT || 587),
+      secure: process.env.SMTP_SECURE === "true",
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
     });
 
-    await transporter.sendMail({
+    const recipients = new Set([process.env.SMTP_USER]);
+    if (ccSender) {
+      recipients.add(email);
+    }
+
+    const mailPayload = {
       from: process.env.SMTP_USER,
-      to: process.env.SMTP_USER,
-      subject: "New Message",
-      text: message,
-    });
+      to: Array.from(recipients).join(", "),
+      replyTo: email,
+      subject: `[Portfolio] ${subject}`,
+      text: `Message from ${name} <${email}>:\n\n${message}`,
+      html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Message:</strong><br/>${message.replace(/\n/g, "<br/>")}</p>`,
+    };
+
+    await transporter.sendMail(mailPayload);
 
     return res.status(200).json({ success: true });
 
