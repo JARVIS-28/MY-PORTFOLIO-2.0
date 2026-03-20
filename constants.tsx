@@ -56,7 +56,7 @@ export const PROJECTS: Project[] = [
     title: "Group Article Recommendation System",
     description: "Ongoing Research: Engineered a group-based article recommendation engine using a Knowledge Graph. Applied metaheuristic optimization to rank articles for multiple users, improving shared interest coverage.",
     tags: ["Research", "Python", "Knowledge Graph", "Optimization"],
-    github: "https://github.com/JARVIS-28",
+    github: "https://github.com/JARVIS-28/Group-Article-Recommendation-System",
     image: "https://picsum.photos/seed/research_graph/800/600"
   },
   {
